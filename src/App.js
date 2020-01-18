@@ -1,26 +1,55 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Login from './Login/Login';
+import Registration from './Registration/Registration';
+import Dashboard from './Dashboard/Dashboard';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+class App extends Component {
+    renderNav() {
+        const token = localStorage.getItem("token");
+        let nav;
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+        if (token) {
+            nav = <ul className="navbar-nav mr-auto">
+                <li className="nav-item">
+                    <Link to={'/dashboard'} className="nav-link">Dashboard</Link>
+                </li>
+            </ul>;
+        } else {
+            nav = <ul className="navbar-nav mr-auto">
+                <li className="nav-item">
+                    <Link to={'/login'} className="nav-link">Login</Link>
+                </li>
+                <li className="nav-item">
+                    <Link to={'/registration'} className="nav-link">Register</Link>
+                </li>
+            </ul>;
+        }
+
+        return nav;
+    }
+
+    render() {
+        return (
+            <Router>
+                <div className="container">
+                    <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+                        <Link to={'/'} className="nav-link">Dragonslayer</Link>
+                        <div className="collapse navbar-collapse">
+                            {this.renderNav()}
+                        </div>
+                    </nav>
+                    <Switch>
+                        <Route exact path='/login' component={Login} />
+                        <Route path='/registration' component={Registration} />
+                    </Switch>
+                    <Switch>
+                        <Route path='/dashboard' component={Dashboard} />
+                    </Switch>
+                </div>
+            </Router>
+        );
+    }
 }
 
 export default App;
