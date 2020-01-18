@@ -6,7 +6,7 @@ class Dashboard extends Component {
     render() {
         return (
             <div className="mb-2 pageheading row">
-                <div className="col-sm-12 btn btn-primary">
+                <div className="col-sm-12 btn btn-primary dashboard">
                     Dashboard 
                 </div>
                 <Game/>

@@ -47,6 +47,8 @@ class Login extends Component {
             }
         }).then((Response) => Response.json())
         .then((result) => {
+            localStorage.removeItem('user');
+            localStorage.removeItem('token');
             localStorage.setItem('user', JSON.stringify(result.data));
             localStorage.setItem('token', this.state.token);
         })

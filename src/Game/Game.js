@@ -1,4 +1,5 @@
 import React from 'react';
+import ModalCreate from './Component/ModalCreate.js';
 
 class Game extends React.Component {
     constructor() {
@@ -9,12 +10,39 @@ class Game extends React.Component {
         }
 
         this.games = this.games.bind(this);
+        this.renderGames = this.rendeGames.bind(this);
     }
 
     games(games) {
         this.setState({
             games: games
-        })
+        });
+    }
+
+    rendeGames() {
+        let games = this.state.games.map((game, key) => {
+            return (
+                <div className="col-sm col-md col-lg col-xl">
+                    <div className="card">
+                        <div className="card-header">
+                            {game.result}
+                        </div>
+                        <div className="card-body">
+                            {game.name}
+                        </div>
+                    </div>
+                </div>
+            );
+        });
+
+        return (
+            <div className="container">
+                <button className="btn btn-success">Start New Game</button>
+                <div className="row">
+                    {games}
+                </div>
+            </div>
+        );
     }
 
     componentDidMount() {
@@ -35,12 +63,10 @@ class Game extends React.Component {
     }
 
     render() {
-        return (
-            <div>
-                {this.state.games.map((game) => {
-                    <p>{game.name}</p>
-                })}
-            </div>
+        let games = this.state.games || '';
+        
+        return games ? this.renderGames() : (
+            <span>Loading games...</span>
         );
     }
 }
