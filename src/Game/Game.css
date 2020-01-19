@@ -1,0 +1,36 @@
+.game-container {
+    margin-top: 20px;
+}
+
+.player {
+    width: 300px;
+    height: 350px;
+    object-fit: contain;
+    margin: auto;
+}
+
+.dragon {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    display: block;
+    width: 300px;
+    height: 350px;
+    object-fit: cover;
+    margin: auto;
+}
+
+.attack-holder {
+    width: 100%;
+}
+
+.margin-auto {
+    margin: auto !important;
+}
+
+.margin-x10 {
+    margin: 0 10px !important;
+}
+
+.margin-y10 {
+    margin: 10px 0 !important;
+}

@@ -3,7 +3,9 @@ import './App.css';
 import Login from './Login/Login';
 import Registration from './Registration/Registration';
 import Dashboard from './Dashboard/Dashboard';
+import GameData from './Game/GameData';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+
 class App extends Component {
     renderNav() {
         const token = localStorage.getItem("token");
@@ -45,6 +47,9 @@ class App extends Component {
                     </Switch>
                     <Switch>
                         <Route path='/dashboard' component={Dashboard} />
+                    </Switch>
+                    <Switch>
+                        <Route path='/games/:gameId' component={GameData}/>
                     </Switch>
                 </div>
             </Router>

@@ -1,16 +1,17 @@
 import React from 'react';
-import ModalCreate from './Component/ModalCreate.js';
+import './Game.css';
 
 class Game extends React.Component {
     constructor() {
         super();
 
         this.state = {
-            games: ''
+            games: '',
         }
 
         this.games = this.games.bind(this);
-        this.renderGames = this.rendeGames.bind(this);
+        this.renderGames = this.renderGames.bind(this);
+        this.createGame = this.createGame.bind(this);
     }
 
     games(games) {
@@ -19,7 +20,23 @@ class Game extends React.Component {
         });
     }
 
-    rendeGames() {
+    createGame() {
+        let token = localStorage.getItem('token');
+
+        fetch('http://localhost:8000/api/games', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        }).then((Response) => Response.json())
+        .then((result) => {
+            
+        });
+    }
+
+    renderGames() {
         let games = this.state.games.map((game, key) => {
             return (
                 <div className="col-sm col-md col-lg col-xl">
@@ -28,7 +45,8 @@ class Game extends React.Component {
                             {game.result}
                         </div>
                         <div className="card-body">
-                            {game.name}
+                            <p>Game: {game.name}</p>
+                            <p>Enemy: {game.enemy.name}</p>
                         </div>
                     </div>
                 </div>
@@ -37,8 +55,8 @@ class Game extends React.Component {
 
         return (
             <div className="container">
-                <button className="btn btn-success">Start New Game</button>
-                <div className="row">
+                <button onClick={this.createGame} className="btn btn-success">Start New Game</button>
+                <div className="row game-container">
                     {games}
                 </div>
             </div>
