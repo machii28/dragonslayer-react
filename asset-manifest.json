@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/dragonslayer-react/static/css/main.9ca5cffe.chunk.css",
-    "main.js": "/dragonslayer-react/static/js/main.c5fd7643.chunk.js",
-    "main.js.map": "/dragonslayer-react/static/js/main.c5fd7643.chunk.js.map",
+    "main.js": "/dragonslayer-react/static/js/main.17bfdb12.chunk.js",
+    "main.js.map": "/dragonslayer-react/static/js/main.17bfdb12.chunk.js.map",
     "runtime-main.js": "/dragonslayer-react/static/js/runtime-main.60ea269e.js",
     "runtime-main.js.map": "/dragonslayer-react/static/js/runtime-main.60ea269e.js.map",
     "static/js/2.efddd928.chunk.js": "/dragonslayer-react/static/js/2.efddd928.chunk.js",
     "static/js/2.efddd928.chunk.js.map": "/dragonslayer-react/static/js/2.efddd928.chunk.js.map",
     "index.html": "/dragonslayer-react/index.html",
-    "precache-manifest.ebc8d343d61a65831656e7269bf6d35b.js": "/dragonslayer-react/precache-manifest.ebc8d343d61a65831656e7269bf6d35b.js",
+    "precache-manifest.1462b4f1e03ee213a9f6967b0293fb80.js": "/dragonslayer-react/precache-manifest.1462b4f1e03ee213a9f6967b0293fb80.js",
     "service-worker.js": "/dragonslayer-react/service-worker.js",
     "static/css/main.9ca5cffe.chunk.css.map": "/dragonslayer-react/static/css/main.9ca5cffe.chunk.css.map",
     "static/js/2.efddd928.chunk.js.LICENSE": "/dragonslayer-react/static/js/2.efddd928.chunk.js.LICENSE",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.60ea269e.js",
     "static/js/2.efddd928.chunk.js",
     "static/css/main.9ca5cffe.chunk.css",
-    "static/js/main.c5fd7643.chunk.js"
+    "static/js/main.17bfdb12.chunk.js"
   ]
 }
