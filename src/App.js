@@ -42,7 +42,7 @@ class App extends Component {
                         </div>
                     </nav>
                     <Switch>
-                        <Route exact path='/login' component={Login} />
+                        <Route exact path='/dragonslayer-react/login' component={Login} />
                         <Route path='/dragonslayer-react/registration' component={Registration} />
                     </Switch>
                     <Switch>
