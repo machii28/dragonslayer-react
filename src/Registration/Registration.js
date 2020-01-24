@@ -49,10 +49,13 @@ class Registration extends Component {
             })
         }).then((Response) => Response.json())
         .then((result) => {
-            if (result.success)
+            if (result.success) {
                 alert('Welcome');
-            else
                 this.props.history.push('/dragonslayer-react/dashboard');
+            }
+            else {
+                alert('Error registering');
+            }
         });
     }
 
