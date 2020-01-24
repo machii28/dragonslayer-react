@@ -51,7 +51,7 @@ class Registration extends Component {
         .then((result) => {
             if (result.success) {
                 alert('Welcome');
-                this.props.history.push('/dragonslayer-react/dashboard');
+                window.location.href = '/dragonslayer-react/dashboard';
             }
             else {
                 alert('Error registering');
