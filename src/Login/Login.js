@@ -70,7 +70,7 @@ class Login extends Component {
             if (result.success) {
                 this.token(result.data.token);
                 this.getUser();
-                this.props.history.push('/dashboard');
+                this.props.history.push('/dragonslayer-react/dashboard');
             } else {
                 alert('Invalid Credentials')
             }

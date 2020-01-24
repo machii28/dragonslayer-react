@@ -52,7 +52,7 @@ class Registration extends Component {
             if (result.success)
                 alert('Welcome');
             else
-                this.props.history.push('/dashboard');
+                this.props.history.push('/dragonslayer-react/dashboard');
         });
     }
 

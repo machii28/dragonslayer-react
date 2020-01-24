@@ -35,7 +35,7 @@ class Game extends React.Component {
             }
         }).then((Response) => Response.json())
         .then((result) => {
-            window.location.href = `/games/${result.data.id}`
+            window.location.href = `/dragonslayer-react/games/${result.data.id}`
         });
     }
 
@@ -89,7 +89,7 @@ class Game extends React.Component {
                 } else {
                     localStorage.removeItem('token');
                     localStorage.removeItem('user');
-                    window.location.href = '/login'
+                    window.location.href = '/dragonslayer-react/login'
                 }
             });
         }, 1000);

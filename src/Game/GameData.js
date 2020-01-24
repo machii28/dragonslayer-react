@@ -197,7 +197,7 @@ class GameData extends React.Component {
                 this.enemy(result.data.enemy);
                 this.game(result.data);
             } else {
-                this.props.history.push('/dashboard');
+                this.props.history.push('/dragonslayer-react/dashboard');
             }
         });
     }
