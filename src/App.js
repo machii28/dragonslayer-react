@@ -43,13 +43,13 @@ class App extends Component {
                     </nav>
                     <Switch>
                         <Route exact path='/login' component={Login} />
-                        <Route path='/registration' component={Registration} />
+                        <Route path='/dragonslayer-react/registration' component={Registration} />
                     </Switch>
                     <Switch>
-                        <Route path='/dashboard' component={Dashboard} />
+                        <Route path='/dragonslayer-react/dashboard' component={Dashboard} />
                     </Switch>
                     <Switch>
-                        <Route path='/games/:gameId' component={GameData}/>
+                        <Route path='/dragonslayer-react/games/:gameId' component={GameData}/>
                     </Switch>
                 </div>
             </Router>
