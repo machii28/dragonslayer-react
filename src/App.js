@@ -14,16 +14,16 @@ class App extends Component {
         if (token) {
             nav = <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
-                    <Link to={'/dashboard'} className="nav-link">Dashboard</Link>
+                    <Link to={'/dragonslayer-react/dashboard'} className="nav-link">Dashboard</Link>
                 </li>
             </ul>;
         } else {
             nav = <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
-                    <Link to={'/login'} className="nav-link">Login</Link>
+                    <Link to={'/dragonslayer-react/login'} className="nav-link">Login</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to={'/registration'} className="nav-link">Register</Link>
+                    <Link to={'/dragonslayer-react/registration'} className="nav-link">Register</Link>
                 </li>
             </ul>;
         }
