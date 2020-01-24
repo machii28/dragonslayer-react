@@ -36,6 +36,7 @@
     ]
   },
   "devDependencies": {
+    "reactstrap": "^8.4.0",
     "redux": "^4.0.5"
   }
 }

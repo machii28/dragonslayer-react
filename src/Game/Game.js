@@ -1,5 +1,8 @@
 import React from 'react';
 import './Game.css';
+import { createBrowserHistory } from 'history';
+
+export const history = createBrowserHistory();
 
 class Game extends React.Component {
     constructor() {
@@ -32,14 +35,14 @@ class Game extends React.Component {
             }
         }).then((Response) => Response.json())
         .then((result) => {
-            
+            window.location.href = `/games/${result.data.id}`
         });
     }
 
     renderGames() {
         let games = this.state.games.map((game, key) => {
             return (
-                <div className="col-sm col-md col-lg col-xl">
+                <div style={{ 'margin-top': "10px" }} className="col-sm-3 col-md-3 col-lg-3 col-xl-3" key={game.id}>
                     <div className="card">
                         <div className="card-header">
                             {game.result}
@@ -47,6 +50,9 @@ class Game extends React.Component {
                         <div className="card-body">
                             <p>Game: {game.name}</p>
                             <p>Enemy: {game.enemy.name}</p>
+                        </div>
+                        <div className="card-footer">
+
                         </div>
                     </div>
                 </div>
@@ -64,20 +70,29 @@ class Game extends React.Component {
     }
 
     componentDidMount() {
-        let token = localStorage.getItem('token');
+        let _this = this;
 
-        fetch('http://localhost:8000/api/games', {
-            method: 'get',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
-        }).then((Response) => Response.json())
-        .then((result) => {
-            if (result.success)
-                this.games(result.data);
-        });
+        window.setTimeout(function() {
+            let token = localStorage.getItem('token');
+
+            fetch('http://localhost:8000/api/games', {
+                method: 'get',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            }).then((Response) => Response.json())
+            .then((result) => {
+                if (result.success) {
+                    _this.games(result.data);
+                } else {
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('user');
+                    window.location.href = '/login'
+                }
+            });
+        }, 1000);
     }
 
     render() {

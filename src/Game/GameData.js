@@ -1,5 +1,4 @@
 import React from 'react';
-import ProgressBar from 'react-bootstrap/ProgressBar';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import dragon from './dragon.png';
@@ -26,6 +25,8 @@ class GameData extends React.Component {
         this.makeEnemyMove = this.makeEnemyMove.bind(this);
         this.damagePlayer = this.damagePlayer.bind(this);
         this.healPlayer = this.healPlayer.bind(this);
+        this.sendAction = this.sendAction.bind(this);
+        this.checkResult = this.checkResult.bind(this);
     }
 
     player(player) {
@@ -69,6 +70,7 @@ class GameData extends React.Component {
                 this.actions(action);
                 this.damageEnemy(amount);
                 this.makeEnemyMove();
+                this.sendAction(action);
                 break;
             
             case 'blast':
@@ -77,15 +79,22 @@ class GameData extends React.Component {
                 this.actions(action);
                 this.damageEnemy(amount);
                 this.makeEnemyMove();
+                this.sendAction(action);
                 break;
 
             case 'heal':
-                    amount = Math.floor(Math.random() * (this.state.player.life / 2)) + 1;
-                    action = `${this.state.player.name} healed his life for ${amount}`;
-                    this.actions(action);
-                    this.healPlayer(amount);
-                    this.makeEnemyMove();
-                    break;
+                amount = Math.floor(Math.random() * (this.state.player.life / 2)) + 1;
+                action = `${this.state.player.name} healed his life for ${amount}`;
+                this.actions(action);
+                this.healPlayer(amount);
+                this.makeEnemyMove();
+                this.sendAction(action);
+                break;
+
+            case 'give-up':
+                this.actions(action);
+                this.updateGame('Given Up');
+                break; 
         
             default:
                 break;
@@ -94,10 +103,12 @@ class GameData extends React.Component {
 
     healPlayer(amount) {
         this.state.player.life = this.state.player.life + amount;
+        this.checkResult();
     }
 
     damageEnemy(damage) {
         this.state.enemy.life = this.state.enemy.life > 0 ? (this.state.enemy.life - damage) : 0;
+        this.checkResult();
     }
 
     makeEnemyMove() {
@@ -127,6 +138,46 @@ class GameData extends React.Component {
 
     damagePlayer(damage) {
         this.state.player.life = this.state.player.life > 0 ? (this.state.player.life - damage) : 0;
+        this.checkResult();
+    }
+
+    updateGame(result) {
+        let token = localStorage.getItem('token');
+
+        fetch(`http://localhost:8000/api/games/${this.state.game.id}`, {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                result: result,
+                _method: 'PUT'
+            })
+        }).then((Response) => Response.json())
+        .then((result) => {
+            window.location.href = '/dashboard'
+        });
+    }
+
+    sendAction(action) {
+        let token = localStorage.getItem('token');
+
+        fetch(`http://localhost:8000/api/actions`, {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                actions: action,
+                game_id: this.state.game.id
+            })
+        }).then((Response) => Response.json())
+        .then((result) => {
+        });
     }
 
     fetchGameData(gameId) {
@@ -149,6 +200,14 @@ class GameData extends React.Component {
                 this.props.history.push('/dashboard');
             }
         });
+    }
+
+    checkResult() {
+        if (this.state.player.life === 0 && this.state.enemy.life !== 0) {
+            this.updateGame('Lose Game');
+        } else if (this.state.player.life !== 0 && this.state.enemy.life === 0) {
+            this.updateGame('Win Game');
+        }
     }
     
     componentDidMount() {
@@ -182,13 +241,15 @@ class GameData extends React.Component {
                             <div className="progress-bar bg-danger" style={{ width:`${this.state.enemy.life}%` }}></div>
                         </div>
                         <p className="margin-y10">{this.state.enemy.name} : {this.state.enemy.life}</p>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-sm col-md col-lg col-xl">
-                    <ListGroup className="margin-y10">
-                        
-                    </ListGroup>
+                        <div className="col-sm col-md col-lg col-xl">
+                            <div style={{ height: "400px", overflow: "auto" }}>
+                                <ListGroup className="margin-y10">
+                                    {this.state.actions.map((action, key) => {
+                                        return (<ListGroup.Item key={key}>{action}</ListGroup.Item>);
+                                    })}
+                                </ListGroup>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
