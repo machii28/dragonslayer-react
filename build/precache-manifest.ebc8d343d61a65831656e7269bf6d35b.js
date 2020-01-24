@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "69e28d1545885f6507e8bbdedea21ee1",
+    "revision": "56f2e1bd08b79e8e41da4dfaeab9d820",
     "url": "/dragonslayer-react/index.html"
   },
   {
-    "revision": "2a6c0ec55475fc1d786b",
+    "revision": "de2092ab169fcb71e885",
     "url": "/dragonslayer-react/static/css/main.9ca5cffe.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/dragonslayer-react/static/js/2.efddd928.chunk.js.LICENSE"
   },
   {
-    "revision": "2a6c0ec55475fc1d786b",
-    "url": "/dragonslayer-react/static/js/main.ce14bed7.chunk.js"
+    "revision": "de2092ab169fcb71e885",
+    "url": "/dragonslayer-react/static/js/main.c5fd7643.chunk.js"
   },
   {
     "revision": "5451e8edcfdced50caed",

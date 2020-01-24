@@ -144,7 +144,7 @@ class GameData extends React.Component {
     updateGame(result) {
         let token = localStorage.getItem('token');
 
-        fetch(`http://localhost:8000/api/games/${this.state.game.id}`, {
+        fetch(`https://dragonslayer-test.herokuapp.com/api/games/${this.state.game.id}`, {
             method: 'post',
             headers: {
                 'Accept': 'application/json',
@@ -164,7 +164,7 @@ class GameData extends React.Component {
     sendAction(action) {
         let token = localStorage.getItem('token');
 
-        fetch(`http://localhost:8000/api/actions`, {
+        fetch(`https://dragonslayer-test.herokuapp.com/api/actions`, {
             method: 'post',
             headers: {
                 'Accept': 'application/json',
@@ -183,7 +183,7 @@ class GameData extends React.Component {
     fetchGameData(gameId) {
         let token = localStorage.getItem('token');
 
-        fetch(`http://localhost:8000/api/games/${gameId}`, {
+        fetch(`https://dragonslayer-test.herokuapp.com/api/games/${gameId}`, {
             method: 'get',
             headers: {
                 'Accept': 'application/json',

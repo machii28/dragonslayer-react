@@ -26,7 +26,7 @@ class Game extends React.Component {
     createGame() {
         let token = localStorage.getItem('token');
 
-        fetch('http://localhost:8000/api/games', {
+        fetch('https://dragonslayer-test.herokuapp.com/api/games', {
             method: 'post',
             headers: {
                 'Accept': 'application/json',
@@ -75,7 +75,7 @@ class Game extends React.Component {
         window.setTimeout(function() {
             let token = localStorage.getItem('token');
 
-            fetch('http://localhost:8000/api/games', {
+            fetch('https://dragonslayer-test.herokuapp.com/api/games', {
                 method: 'get',
                 headers: {
                     'Accept': 'application/json',

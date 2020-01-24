@@ -36,7 +36,7 @@ class Registration extends Component {
     }
 
     register(event) {
-        fetch('http://localhost:8000/api/register', {
+        fetch('https://dragonslayer-test.herokuapp.com/api/register', {
             method: 'post',
             headers: {
                 'Accept': 'application/json',

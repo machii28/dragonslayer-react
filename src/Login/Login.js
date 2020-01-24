@@ -38,7 +38,7 @@ class Login extends Component {
     }
     
     getUser(event) {
-        fetch('http://localhost:8000/api/users', {
+        fetch('https://dragonslayer-test.herokuapp.com/api/users', {
             method: 'get',
             headers: {
                 'Accept': 'application/json',
@@ -55,7 +55,7 @@ class Login extends Component {
     }
 
     login(event) {
-        fetch('http://localhost:8000/api/login', {
+        fetch('https://dragonslayer-test.herokuapp.com/api/login', {
             method: 'post',
             headers: {
                 'Accept': 'application/json',
