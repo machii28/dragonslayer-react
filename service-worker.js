@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/dragonslayer-react/precache-manifest.e5096a4d5a9b3f67d9b7e8386e642253.js"
+  "/dragonslayer-react/precache-manifest.21fdd1e055649c8115d854e8c8c076c0.js"
 );
 
 self.addEventListener('message', (event) => {
