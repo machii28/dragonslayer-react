@@ -157,7 +157,7 @@ class GameData extends React.Component {
             })
         }).then((Response) => Response.json())
         .then((result) => {
-            window.location.href = '/dragonslayer-react/dashboard'
+            window.location.href = '/dragonslayer-react/dashboard';
         });
     }
 
